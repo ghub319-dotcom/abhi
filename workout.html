@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GreenBite — Home</title>
+<meta name="description" content="GreenBite: healthy living through balanced meals, exercise, and mindfulness." />
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/assets/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="stylesheet" href="/css/styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script defer src="/js/app.js"></script>
+
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">GreenBite</a>
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav" data-collapsed="true">
+    <a href="/index.html">Home</a>
+    <a href="/recipes.html">Healthy Recipes</a>
+    <a href="/calculator.html">Calorie Calculator</a>
+    <a href="/workout.html">Workout Generator</a>
+    <a href="/mindfulness.html">Mindfulness</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+<main class="container">
+
+<section class="hero">
+  <div class="hero-text">
+    <h1 id="rotating-quote" class="animate-in">Eat green. Live clean.</h1>
+    <p class="sub">Daily nudge to move, nourish, and breathe.</p>
+    <a class="btn" href="/recipes.html">Explore Recipes</a>
+  </div>
+</section>
+
+<section class="tips">
+  <h2>Health Tip of the Day</h2>
+  <div id="tip-card" class="card">
+    <p id="tip-text">Loading…</p>
+  </div>
+</section>
+
+<section class="features grid">
+  <a class="feature card reveal" href="/calculator.html">
+    <h3>Calories & Macros</h3>
+    <p>Find your BMR/TDEE and a sensible macro split.</p>
+  </a>
+  <a class="feature card reveal" href="/workout.html">
+    <h3>Workout Generator</h3>
+    <p>Get a quick routine tailored to your gear.</p>
+  </a>
+  <a class="feature card reveal" href="/mindfulness.html">
+    <h3>Mindfulness</h3>
+    <p>Breathing, timers, and ambient soundscapes.</p>
+  </a>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="newsletter">
+    <h3>Join the newsletter</h3>
+    <form id="newsletter-form">
+      <input type="email" id="newsletter-email" placeholder="you@example.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p id="newsletter-msg" role="status" aria-live="polite"></p>
+  </div>
+  <p class="copy">© <span id="year"></span> GreenBite. Live well, feel better.</p>
+</footer>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GreenBite — Healthy Recipes</title>
+<meta name="description" content="GreenBite: healthy living through balanced meals, exercise, and mindfulness." />
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/assets/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="stylesheet" href="/css/styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script defer src="/js/app.js"></script>
+<script defer src="/js/recipes.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">GreenBite</a>
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav" data-collapsed="true">
+    <a href="/index.html">Home</a>
+    <a href="/recipes.html">Healthy Recipes</a>
+    <a href="/calculator.html">Calorie Calculator</a>
+    <a href="/workout.html">Workout Generator</a>
+    <a href="/mindfulness.html">Mindfulness</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+<main class="container">
+
+<section>
+  <h1>Healthy Recipes</h1>
+  <div class="filters">
+    <input id="search" placeholder="Search by name…" />
+    <select id="category">
+      <option value="">All categories</option>
+      <option>Breakfast</option>
+      <option>Lunch</option>
+      <option>Dinner</option>
+      <option>Snack</option>
+    </select>
+  </div>
+  <div id="recipes-grid" class="grid"></div>
+</section>
+
+<div id="recipe-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="recipe-title">
+  <div class="modal-content">
+    <button class="close" id="close-modal" aria-label="Close modal">×</button>
+    <h2 id="recipe-title"></h2>
+    <img id="recipe-image" alt="" />
+    <p id="recipe-desc"></p>
+    <h3>Ingredients</h3>
+    <ul id="recipe-ingredients"></ul>
+    <h3>Steps</h3>
+    <ol id="recipe-steps"></ol>
+    <h3>Nutrition</h3>
+    <table class="nutrition">
+      <thead><tr><th>Calories</th><th>Carbs (g)</th><th>Protein (g)</th><th>Fat (g)</th></tr></thead>
+      <tbody id="recipe-nutrition"></tbody>
+    </table>
+  </div>
+</div>
+
+</main>
+<footer class="site-footer">
+  <div class="newsletter">
+    <h3>Join the newsletter</h3>
+    <form id="newsletter-form">
+      <input type="email" id="newsletter-email" placeholder="you@example.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p id="newsletter-msg" role="status" aria-live="polite"></p>
+  </div>
+  <p class="copy">© <span id="year"></span> GreenBite. Live well, feel better.</p>
+</footer>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GreenBite — Calorie & Nutrition Calculator</title>
+<meta name="description" content="GreenBite: healthy living through balanced meals, exercise, and mindfulness." />
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/assets/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="stylesheet" href="/css/styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script defer src="/js/app.js"></script>
+<script defer src="/js/calculator.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">GreenBite</a>
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav" data-collapsed="true">
+    <a href="/index.html">Home</a>
+    <a href="/recipes.html">Healthy Recipes</a>
+    <a href="/calculator.html">Calorie Calculator</a>
+    <a href="/workout.html">Workout Generator</a>
+    <a href="/mindfulness.html">Mindfulness</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+<main class="container">
+
+<section>
+  <h1>Calorie & Nutrition Calculator</h1>
+  <form id="calc-form" class="grid two">
+    <label>Age (years)<input type="number" id="age" min="10" max="120" required></label>
+    <label>Gender
+      <select id="gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </label>
+    <label>Height (cm)<input type="number" id="height" min="100" max="230" required></label>
+    <label>Weight (kg)<input type="number" id="weight" min="30" max="300" required></label>
+    <label>Activity level
+      <select id="activity" required>
+        <option value="1.2">Sedentary — little or no exercise</option>
+        <option value="1.375">Lightly active — 1–3 days/week</option>
+        <option value="1.55">Moderately active — 3–5 days/week</option>
+        <option value="1.725">Very active — 6–7 days/week</option>
+        <option value="1.9">Super active — very hard exercise/job</option>
+      </select>
+    </label>
+    <button class="btn" type="submit">Calculate</button>
+  </form>
+
+  <div id="results" class="results hidden">
+    <div class="stat"><strong>BMR:</strong> <span id="bmr">0</span> kcal</div>
+    <div class="stat"><strong>TDEE:</strong> <span id="tdee">0</span> kcal</div>
+    <div class="progress">
+      <div class="progress-item"><span>Carbs</span><div class="bar"><div id="carb-bar"></div></div><div id="carb-grams"></div></div>
+      <div class="progress-item"><span>Protein</span><div class="bar"><div id="protein-bar"></div></div><div id="protein-grams"></div></div>
+      <div class="progress-item"><span>Fat</span><div class="bar"><div id="fat-bar"></div></div><div id="fat-grams"></div></div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="newsletter">
+    <h3>Join the newsletter</h3>
+    <form id="newsletter-form">
+      <input type="email" id="newsletter-email" placeholder="you@example.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p id="newsletter-msg" role="status" aria-live="polite"></p>
+  </div>
+  <p class="copy">© <span id="year"></span> GreenBite. Live well, feel better.</p>
+</footer>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GreenBite — Workout Generator</title>
+<meta name="description" content="GreenBite: healthy living through balanced meals, exercise, and mindfulness." />
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/assets/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="stylesheet" href="/css/styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script defer src="/js/app.js"></script>
+<script defer src="/js/workout.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">GreenBite</a>
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav" data-collapsed="true">
+    <a href="/index.html">Home</a>
+    <a href="/recipes.html">Healthy Recipes</a>
+    <a href="/calculator.html">Calorie Calculator</a>
+    <a href="/workout.html">Workout Generator</a>
+    <a href="/mindfulness.html">Mindfulness</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+<main class="container">
+
+<section>
+  <h1>Workout Generator</h1>
+  <form id="workout-form" class="grid two">
+    <label>Body part
+      <select id="bodypart">
+        <option>Full Body</option>
+        <option>Upper Body</option>
+        <option>Lower Body</option>
+        <option>Core</option>
+      </select>
+    </label>
+    <label>Equipment
+      <select id="equipment">
+        <option>None</option>
+        <option>Dumbbells</option>
+        <option>Resistance Bands</option>
+      </select>
+    </label>
+    <button class="btn" type="submit">Generate Plan</button>
+  </form>
+
+  <div id="plan" class="card hidden"></div>
+
+  <div id="timer" class="timer hidden" aria-live="polite">
+    <div id="timer-display">00:30</div>
+    <button id="start">Start</button>
+    <button id="pause">Pause</button>
+    <button id="reset">Reset</button>
+    <audio id="beep" preload="auto">
+      <source src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=" type="audio/wav">
+    </audio>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="newsletter">
+    <h3>Join the newsletter</h3>
+    <form id="newsletter-form">
+      <input type="email" id="newsletter-email" placeholder="you@example.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p id="newsletter-msg" role="status" aria-live="polite"></p>
+  </div>
+  <p class="copy">© <span id="year"></span> GreenBite. Live well, feel better.</p>
+</footer>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GreenBite — Mindfulness</title>
+<meta name="description" content="GreenBite: healthy living through balanced meals, exercise, and mindfulness." />
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/assets/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="stylesheet" href="/css/styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script defer src="/js/app.js"></script>
+<script defer src="/js/mindfulness.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">GreenBite</a>
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav" data-collapsed="true">
+    <a href="/index.html">Home</a>
+    <a href="/recipes.html">Healthy Recipes</a>
+    <a href="/calculator.html">Calorie Calculator</a>
+    <a href="/workout.html">Workout Generator</a>
+    <a href="/mindfulness.html">Mindfulness</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+<main class="container">
+
+<section>
+  <h1>Mindfulness</h1>
+  <div class="breath card">
+    <div class="circle" id="breath-circle" aria-label="Breathing animation"></div>
+    <p id="breath-cue">Inhale…</p>
+  </div>
+
+  <div class="meditation card">
+    <h2>Meditation Timer (Pomodoro-style)</h2>
+    <div class="timer-controls">
+      <input id="minutes" type="number" value="5" min="1" max="60"> minutes
+      <button id="start-meditation">Start</button>
+      <button id="stop-meditation">Stop</button>
+    </div>
+    <div id="meditation-display">05:00</div>
+    <div class="sound-controls">
+      <button id="toggle-ambient">Toggle Ambient</button>
+      <audio id="ambient" loop>
+        <source src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=" type="audio/wav">
+      </audio>
+    </div>
+    <p id="sessions">Completed sessions: 0</p>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="newsletter">
+    <h3>Join the newsletter</h3>
+    <form id="newsletter-form">
+      <input type="email" id="newsletter-email" placeholder="you@example.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p id="newsletter-msg" role="status" aria-live="polite"></p>
+  </div>
+  <p class="copy">© <span id="year"></span> GreenBite. Live well, feel better.</p>
+</footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GreenBite — Contact & Feedback</title>
+<meta name="description" content="GreenBite: healthy living through balanced meals, exercise, and mindfulness." />
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/assets/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="stylesheet" href="/css/styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script defer src="/js/app.js"></script>
+<script defer src="/js/contact.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a href="/index.html" class="logo">GreenBite</a>
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav" data-collapsed="true">
+    <a href="/index.html">Home</a>
+    <a href="/recipes.html">Healthy Recipes</a>
+    <a href="/calculator.html">Calorie Calculator</a>
+    <a href="/workout.html">Workout Generator</a>
+    <a href="/mindfulness.html">Mindfulness</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+<main class="container">
+
+<section>
+  <h1>Contact & Feedback</h1>
+  <form id="contact-form" class="grid two" novalidate>
+    <label>Name<input id="name" required></label>
+    <label>Email<input id="email" type="email" required></label>
+    <label class="full">Message<textarea id="message" rows="5" required></textarea></label>
+    <button class="btn" type="submit">Send</button>
+  </form>
+  <p id="contact-msg" role="status" aria-live="polite"></p>
+
+  <h2>Our HQ</h2>
+  <div class="map-embed">
+    <iframe title="GreenBite HQ" style="border:0" loading="lazy" allowfullscreen
+      src="https://www.openstreetmap.org/export/embed.html?bbox=79.85,6.89,79.88,6.93&layer=mapnik&marker=6.91,79.86"></iframe>
+  </div>
+
+  <h2>FAQ</h2>
+  <div class="accordion" id="faq">
+    <details>
+      <summary>Is GreenBite free?</summary>
+      <p>Yes, all tools here are free to use.</p>
+    </details>
+    <details>
+      <summary>Do you store my data?</summary>
+      <p>We use your browser's localStorage for preferences; no servers involved.</p>
+    </details>
+    <details>
+      <summary>Can I use these plans if I have a condition?</summary>
+      <p>Consult a professional before making major changes to diet or exercise.</p>
+    </details>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="newsletter">
+    <h3>Join the newsletter</h3>
+    <form id="newsletter-form">
+      <input type="email" id="newsletter-email" placeholder="you@example.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p id="newsletter-msg" role="status" aria-live="polite"></p>
+  </div>
+  <p class="copy">© <span id="year"></span> GreenBite. Live well, feel better.</p>
+</footer>
+</body>
+</html>
